@@ -1,0 +1,90 @@
+.app_window {
+  display: flex;
+  height: calc(100vh - 30px);
+  max-width: 1640px;
+  margin: 15px auto;
+}
+
+.sidebar {
+  width: 40%;
+  background-color: #000;
+}
+
+.content_area {
+  width: 100%;
+  background-color: #ff0000;
+}
+
+.header_area {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+
+  background-color: #202c33;
+}
+
+.user_area {
+  color: white;
+}
+
+.icons_area {
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.profile_img > img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.verticalDots svg {
+  transform: rotate(90deg);
+}
+
+.icons_area svg:not(.verticalDots svg) {
+  margin-right: 30px;
+  cursor: pointer;
+}
+
+.spacer_padding {
+  padding: 15px;
+}
+
+.search_header_area {
+  background-color: #111b21;
+  display: flex;
+  align-items: center;
+}
+
+.search_input_area {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 5px 15px;
+  background-color: #202c33;
+  border-radius: 7px;
+}
+
+.search_input_area > svg {
+  fill: #8696a0;
+  margin-right: 20px;
+  margin-left: 10px;
+}
+
+.search_input_area input {
+  display: block;
+  width: 100%;
+  padding: 5px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: #fff;
+}
+
+.search_input_area input::placeholder {
+  color: #8696a0;
+}
