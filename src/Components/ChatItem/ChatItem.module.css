@@ -1,0 +1,64 @@
+.avatar {
+  width: 49px;
+  height: 49px;
+  border-radius: 50%;
+}
+
+.avatar > img {
+  width: inherit;
+  height: inherit;
+  border-radius: 50%;
+}
+
+.chatItem {
+  padding: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.chatItem:hover {
+  background-color: rgba(209, 215, 219, 8%);
+}
+
+.chatItem[data-active="true"] {
+  background-color: rgba(209, 215, 219, 30%);
+}
+
+.detalhes_mensagens {
+  display: flex;
+  width: 100%;
+}
+
+.nome_e_mensagem {
+  flex: 1;
+  margin-left: 10px;
+  color: #fff;
+}
+
+.detalhes_direita {
+  color: #fff;
+}
+
+.notificacoes {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 5px;
+}
+.notificacoes span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #00a884;
+  font-size: 12px;
+  padding: 5px;
+  color: #000;
+  margin: 0;
+}
+
+.hora {
+  color: #00a884;
+}

@@ -12,7 +12,6 @@
 
 .content_area {
   width: 100%;
-  background-color: #ff0000;
 }
 
 .header_area {
@@ -58,6 +57,8 @@
   background-color: #111b21;
   display: flex;
   align-items: center;
+  padding: 8px 15px;
+  border-bottom: 1px solid rgba(209, 215, 219, 10%);
 }
 
 .search_input_area {
@@ -87,4 +88,27 @@
 
 .search_input_area input::placeholder {
   color: #8696a0;
+}
+
+.search_header_area > svg {
+  fill: #8696a0;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.chatlist_area {
+  background-color: #111b21;
+  height: calc(100% - 74px - 52px);
+  max-height: calc(100% - 74px - 52px);
+  overflow: auto;
+}
+
+.chatlist_area::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.chatlist_area::-webkit-scrollbar-thumb {
+  background-color: #88888835;
+  height: 10px;
 }
