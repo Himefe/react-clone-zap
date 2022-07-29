@@ -1,0 +1,49 @@
+.chatWindow_header {
+  display: flex;
+  justify-content: space-between;
+  height: 59px;
+  align-items: center;
+  background-color: #202c33;
+  color: #fff;
+  padding: 0 15px;
+}
+
+.chatWindow_headerInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #e9edef;
+  flex: 1;
+  cursor: pointer;
+}
+
+.chatWindow_headerInfo b {
+  font-weight: 500;
+}
+
+.chatWindow_avatar {
+  height: 40px;
+  width: 40px;
+}
+
+.chatWindow_avatar img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.chatWindow_icons_area {
+  margin-right: 10px;
+  display: flex;
+  gap: 20px;
+}
+
+.chatWindow_icons_area svg {
+  fill: #aebac1;
+  cursor: pointer;
+}
+
+.chatWindow_icons_area svg:last-child {
+  transform: rotate(90deg);
+}

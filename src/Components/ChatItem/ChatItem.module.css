@@ -11,7 +11,8 @@
 }
 
 .chatItem {
-  padding: 15px;
+  padding: 0 15px;
+  height: 72px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -22,18 +23,36 @@
 }
 
 .chatItem[data-active="true"] {
-  background-color: rgba(209, 215, 219, 30%);
+  background-color: rgba(209, 215, 219, 10%);
+  border-bottom: none;
 }
 
 .detalhes_mensagens {
   display: flex;
   width: 100%;
+  height: 100%;
+  border-bottom: 1px solid rgba(209, 215, 219, 10%);
+  align-items: center;
 }
 
 .nome_e_mensagem {
   flex: 1;
   margin-left: 10px;
   color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.nome_e_mensagem > b {
+  font-weight: 400;
+  font-size: 1, 0625rem;
+  color: #e9edef;
+}
+
+.nome_e_mensagem p {
+  font-size: 0.875rem;
+  color: #d1d7db;
 }
 
 .detalhes_direita {

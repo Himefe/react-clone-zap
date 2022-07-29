@@ -8,6 +8,7 @@
 .sidebar {
   width: 40%;
   background-color: #000;
+  border-right: 1px solid rgba(209, 215, 219, 25%);
 }
 
 .content_area {
@@ -19,6 +20,8 @@
   align-items: center;
   justify-content: space-between;
   color: white;
+  height: 59px;
+  padding: 0 15px !important;
 
   background-color: #202c33;
 }
@@ -98,8 +101,8 @@
 
 .chatlist_area {
   background-color: #111b21;
-  height: calc(100% - 74px - 52px);
-  max-height: calc(100% - 74px - 52px);
+  height: calc(100% - 54px - 59px);
+  max-height: calc(100% - 54px - 59px);
   overflow: auto;
 }
 

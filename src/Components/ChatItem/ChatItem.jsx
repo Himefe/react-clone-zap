@@ -1,10 +1,14 @@
 import React from "react";
 import AppStyles from "../../App.module.css";
 import styles from "./ChatItem.module.css";
+import { useSelector, useDispatch } from "react-redux";
+import { addActiveChat } from "../../Redux/Reducers/ChatReducer";
 
-const ChatItem = ({ active, setActiveChatId, chat }) => {
-  const handleClickRef = (e) => {
-    setActiveChatId(chat.chatId);
+const ChatItem = ({ active, chat }) => {
+  const dispatch = useDispatch();
+
+  const handleClickRef = () => {
+    dispatch(addActiveChat(chat.chatId));
   };
 
   return (
