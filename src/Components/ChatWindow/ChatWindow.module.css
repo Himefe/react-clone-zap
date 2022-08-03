@@ -1,13 +1,40 @@
 .chatWindow_header {
   display: flex;
   justify-content: space-between;
-  height: 59px;
+  min-height: 59px;
   align-items: center;
   background-color: #202c33;
   color: #fff;
   padding: 0 15px;
 }
 
+.chatWindow_body {
+  height: 100%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.chatWindow_body::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: url("/src/Assets/bg-chat-tile-dark_a4be512e7195b6b733d9110b408f075d.png");
+  opacity: 0.06;
+  z-index: -1;
+}
+
+.chatWindow {
+  height: calc(100vh - 30px);
+  display: flex;
+  flex-direction: column;
+}
 .chatWindow_headerInfo {
   display: flex;
   align-items: center;
@@ -46,4 +73,84 @@
 
 .chatWindow_icons_area svg:last-child {
   transform: rotate(90deg);
+}
+
+.chatWindow_conversation {
+  flex: 1;
+  padding: 0 9%;
+  overflow-y: auto;
+}
+
+.chatWindow_conversation span {
+  display: block;
+  max-width: 100%;
+  white-space: break-spaces;
+  word-break: break-word;
+}
+
+.chatWindow_sendMessageArea {
+  width: 100%;
+  min-height: 62px;
+  background-color: #202c33;
+  padding: 0 20px;
+  display: flex;
+
+  align-items: center;
+}
+
+.chatWindow_emoticonArea {
+  display: inline-flex;
+  align-items: center;
+}
+
+.chatWindow_emoticonArea svg {
+  fill: #8696a0;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.chatWindow_emoticonArea svg:last-child {
+  transform: rotate(-40deg);
+}
+
+.chatWindow_inputArea {
+  width: 100%;
+  display: flex;
+}
+
+.chatWindow_inputArea input {
+  width: 100%;
+  outline: none;
+  border: none;
+  background-color: #2a3942;
+  border-radius: 8px;
+  padding: 5px 15px;
+  min-height: 40px;
+  color: #fff;
+  flex: 1;
+}
+
+.chatWindow_inputArea input::placeholder {
+  font-weight: 500;
+  font-size: 1rem;
+  color: #8696a0;
+}
+
+.chatWindow_micArea {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.chatWindow_micArea svg {
+  cursor: pointer;
+  fill: #8696a0;
+  width: 26px;
+  height: 26px;
+}
+
+.chatWindow_emojiPickerArea {
+  width: 100%;
 }
