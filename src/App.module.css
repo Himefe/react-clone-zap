@@ -2,7 +2,10 @@
   display: flex;
   height: calc(100vh - 30px);
   max-width: 1640px;
-  margin: 15px auto;
+  margin: 15px;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
 }
 
 .sidebar {
@@ -107,11 +110,12 @@
 }
 
 .chatlist_area::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 6px;
+  height: 30px;
 }
 
 .chatlist_area::-webkit-scrollbar-thumb {
   background-color: #88888835;
   height: 10px;
+  border-radius: 10px;
 }

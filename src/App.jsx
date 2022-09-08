@@ -13,52 +13,96 @@ import ChatItem from "./Components/ChatItem/ChatItem";
 import ChatIntro from "./Components/ChatIntro/ChatIntro";
 import { addChatList } from "./Redux/Reducers/ChatReducer";
 import ChatWindow from "./Components/ChatWindow/ChatWindow";
+import { setUserLogado } from "./Redux/Reducers/UserReducer";
+import NewChat from "./Components/NewChat/NewChat";
+import Api from "./Assets/Api/Api";
+import { doc } from "firebase/firestore";
+import { addActiveChat } from "./Redux/Reducers/ChatReducer";
+import Login from "./Components/Login/Login";
 
 const App = () => {
+  const [newChatActive, setNewChatActive] = React.useState(false);
+
+  const userLogado = useSelector((state) => state.userReducer.usuarioLogado);
+  const stateChatReducer = useSelector((state) => state.chatReducer);
+
   const dispatch = useDispatch();
 
-  const chatList = [
-    {
-      chatId: 1,
-      nome: "Irineu Jubileu",
-      avatar: "https://cdn-icons-png.flaticon.com/512/1253/1253756.png",
-      mensagens: ["Boa noite!!!"],
-    },
-    {
-      chatId: 2,
-      nome: "Alírio Sampaio",
-      avatar: "https://cdn-icons-png.flaticon.com/512/147/147140.png",
-      mensagens: ["HAHAHA", "EAI MEU AMIGO", "Moro na rua 2, do lado da rua 1"],
-    },
-    {
-      chatId: 3,
-      nome: "Jorge Zebra",
-      avatar: "https://cdn-icons-png.flaticon.com/512/147/147142.png",
-      mensagens: ["KKAKAKAKA", "HAHAHAHAHAHA"],
-    },
-  ];
+  const googleAuth = async () => {
+    const result = await Api.googlePopup();
+
+    dispatch(
+      setUserLogado({
+        name: result.user.displayName,
+        avatar: result.user.photoURL,
+        id: result.user.uid,
+      })
+    );
+
+    await fetch("http://localhost:8080/new-user", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({
+        id: result.user.uid,
+        name: result.user.displayName,
+        avatar: result.user.photoURL,
+      }),
+    });
+  };
 
   React.useEffect(() => {
-    dispatch(addChatList(chatList));
+    if (stateChatReducer.chatList.chats) {
+      const userObject = {
+        ...userLogado,
+      };
+
+      dispatch(setUserLogado(userObject));
+    }
   }, []);
 
+  const dispatcherChatList = (dados) => {
+    dispatch(addChatList(dados));
+  };
+
+  React.useEffect(() => {
+    if (userLogado !== null) {
+      const { snapshot, data } = Api.onChatList(
+        userLogado.id,
+        dispatcherChatList
+      );
+
+      const unsubscribe = snapshot;
+
+      return unsubscribe; /* unsubscribe */
+    }
+  }, [userLogado]);
+
   const chatState = useSelector((state) => state.chatReducer);
+  const userState = useSelector((state) => state.userReducer);
+
+  if (!userLogado) {
+    return <Login googleAuth={googleAuth} />;
+  }
+
+  const handleClickRef = async (item) => {
+    dispatch(addActiveChat(item.id || item.chatId));
+  };
 
   return (
     <div className={styles.app_window}>
+      {newChatActive && <NewChat setNewChatActive={setNewChatActive} />}
       <aside className={styles.sidebar}>
         <header className={`${styles.header_area} ${styles.spacer_padding}`}>
           <div className={styles.user_area}>
             <div className={styles.profile_img}>
-              <img
-                src="https://png.pngtree.com/png-vector/20190710/ourlarge/pngtree-user-vector-avatar-png-image_1541962.jpg"
-                alt="Profile IMAGE"
-              />
+              <img src={userState.usuarioLogado?.avatar} alt="Profile IMAGE" />
             </div>
           </div>
           <div className={styles.icons_area}>
             <DonutLarge />
-            <Chat />
+            <Chat onClick={() => setNewChatActive(true)} />
             <div className={styles.verticalDots}>
               <MoreHoriz />
             </div>
@@ -79,15 +123,20 @@ const App = () => {
           <FilterList />
         </div>
         <div className={`${styles.chatlist_area}`}>
-          {chatState.chatList.map((item) => (
-            <ChatItem
-              key={item.chatId}
-              chat={item}
-              active={chatState.activeChatId === item.chatId}
-            />
+          {stateChatReducer.chatList?.chats?.map((item) => (
+            <div
+              key={item.chatId || item.id}
+              onClick={() => handleClickRef(item)}
+            >
+              <ChatItem
+                chat={item}
+                active={chatState.activeChatId === item.chat}
+              />
+            </div>
           ))}
         </div>
       </aside>
+
       <main className={styles.content_area}>
         {chatState.activeChatId ? <ChatWindow /> : <ChatIntro />}
       </main>

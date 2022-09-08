@@ -1,0 +1,37 @@
+.messageLine {
+  margin: 15px 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.messageLine[data-user] {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.messageLine[data-user] .messageItem {
+  background-color: #202c33;
+}
+
+.messageItem {
+  padding: 6px 20px 8px 9px;
+  position: relative;
+  display: inline-flex;
+  background-color: #005c4b;
+  border-radius: 7.2px;
+  max-width: 70%;
+}
+
+.messageItem > span {
+  padding-right: 30px;
+  font-size: 14.2px;
+  word-break: break-word;
+}
+
+.messageDate {
+  position: absolute;
+  right: 6px;
+  font-size: 11px;
+  top: calc(100% - 18px);
+  opacity: 0.8;
+}

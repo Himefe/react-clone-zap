@@ -18,6 +18,17 @@
   overflow-y: auto;
 }
 
+.chatWindow_body::-webkit-scrollbar {
+  width: 6px;
+  height: 30px;
+}
+
+.chatWindow_body::-webkit-scrollbar-thumb {
+  background-color: #88888835;
+
+  border-radius: 10px;
+}
+
 .chatWindow_body::after {
   content: "";
   position: absolute;
@@ -79,6 +90,17 @@
   flex: 1;
   padding: 0 9%;
   overflow-y: auto;
+}
+
+.chatWindow_conversation::-webkit-scrollbar {
+  width: 6px;
+  height: 30px;
+}
+
+.chatWindow_conversation::-webkit-scrollbar-thumb {
+  background-color: #88888835;
+  z-index: 10000;
+  border-radius: 8px;
 }
 
 .chatWindow_conversation span {
