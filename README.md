@@ -1,7 +1,7 @@
 # Projeto React: "Clone" do WhatsApp
 
 É um projeto feito em React que consiste no clone de algumas funcionalidades do WhatsApp Web,
-não digo exatamente clone, pois não há todas as funcionalidades que existem atualmente no WhatsApp Web.
+não digo exatamente clone, pois não há todas as funcionalidades que existem atualmente no WhatsApp Web, o projeto foi feito juntamente com o curso de React da B7WEB. Quis me desafiar a fazer utilizando redux e colocar back-end, onde no curso não utilizava Redux e nem Node.
 
 No front-end foi utilizado React, além disso, para diminuir a quantidade de useStates, foi utilizado o Redux, que é um gerenciador de estados;
 
