@@ -25,7 +25,7 @@ Como não há nenhuma conversa, será necessário abrir um novo chat (Como é fe
 
 As mensagens ocorrem em "real-time", então assim que enviar a mensagem, a pessoa com quem estás conversando receberá.
 
-Obs: Pode haver alguns bugs, é BEM provável que tenha, foi apenas um projeto (depois de ter quebrado bastante a cabeça) para poder atualizar e aprimorar meus conhecimentos.
+Obs: Pode haver alguns bugs (Como as imagens que vem do Google, como são HTTPS elas não carregam corretamente.), é BEM provável que tenha, foi apenas um projeto (depois de ter quebrado bastante a cabeça) para poder atualizar e aprimorar meus conhecimentos.
 
 Acredito também que o código não está BEM feito, mas é pra isso que estou treinando.
 
