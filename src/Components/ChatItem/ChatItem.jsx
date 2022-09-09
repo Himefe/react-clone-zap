@@ -13,11 +13,24 @@ const ChatItem = ({ active, chat, isContact }) => {
   React.useEffect(() => {
     const miliseconds = 1000;
 
+    const today = new Date();
+
+    const todayUTC = Date.UTC(
+      today.getFullYear(),
+      today.getMonth(),
+      today.getDate()
+    );
+
     const secondsInDateTime =
       (chat?.lastMessageDate?.seconds || chat?.LastMessageDate?.seconds) *
       miliseconds;
 
     const date = new Date(secondsInDateTime);
+    const dateUTC = Date.UTC(
+      date.getFullYear(),
+      date.getMonth(),
+      date.getDate()
+    );
 
     let hours = date.getHours();
     let minutes = date.getMinutes();
@@ -27,7 +40,32 @@ const ChatItem = ({ active, chat, isContact }) => {
 
     const formatedDateTime = `${hours}:${minutes}`;
 
-    setDateTime(formatedDateTime);
+    const timeDiff = Math.floor((todayUTC - dateUTC) / (1000 * 60 * 60 * 24));
+
+    const dayWeekOfTime = date.getDay();
+
+    const dayOfWeeks = {
+      0: "Domingo",
+      1: "Segunda-feira",
+      2: "Terça-feira",
+      3: "Quarta-feira",
+      4: "Quinta-feira",
+      5: "Sexta-feira",
+      6: "Sábado",
+    };
+
+    const datesToChat = {
+      1: "Ontem",
+      default: dayOfWeeks[dayWeekOfTime],
+    };
+
+    if (timeDiff >= 1) {
+      setDateTime(datesToChat[timeDiff] || datesToChat["default"]);
+    } else if (timeDiff > 7) {
+      setDateTime(`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`);
+    } else {
+      setDateTime(formatedDateTime);
+    }
   }, [chat]);
 
   return (

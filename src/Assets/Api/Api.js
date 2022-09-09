@@ -113,8 +113,6 @@ export default {
     const snapshot = onSnapshot(doc(db, "chats", chatId), (doc) => {
       if (doc.exists) {
         data = doc.data();
-
-        console.log(data);
         if (data !== undefined) {
           dispatcherMessagesList(data?.messages);
           setUsers(data["users"]);
